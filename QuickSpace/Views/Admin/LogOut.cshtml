@@ -1,0 +1,45 @@
+﻿@model QuickSpace.Models.ViewModels.VerificationViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "End Session";
+     Layout = "~/Views/Home/_Layout.cshtml";
+}
+<section id="sign-in" class="bglight position-relative padding">
+    <div class="container">
+        <div class="row">
+           
+            <div class="col-md-12 text-center wow fadeIn" data-wow-delay="300ms">
+                <h2 class="heading bottom30 darkcolor font-light2"><span class="font-normal">End</span> Session
+                    <span class="divider-center"></span>
+                </h2>
+                <div class="col-md-8 offset-md-2 heading_space">
+                    <p>You will be Log out of you Account</p>
+                </div>
+            </div>
+            <div class="col-lg-6 pr-lg-0 col-md-12 d-none d-lg-flex">
+                <div class=" image login-image h-100">
+                    <img src="~/images/pencil.png" alt="" class="w-100 h-100">
+                </div>
+            </div>
+            <div class="col-lg-6 pl-lg-0 col-md-12 whitebox">
+                <div class="widget logincontainer">
+                    <h3 class="darkcolor bottom30 text-center text-lg-left">Sign Out </h3>
+                       <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <form asp-action="LogOut" method="Post" class="getin_form border-form" id="verify">
+                       
+                        <div class="row">
+      
+                            <div class="col-sm-12">
+                                <button type="submit" class="button gradient-btn">End Session</button>
+                                <p class="top30 mb-0"> Already have an account? &nbsp;<a asp-action="Index" asp-controller="Admin" class="defaultcolor">Back to Dashboard</a> </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- sign-in ends -->

@@ -1,0 +1,63 @@
+﻿@model QuickSpace.Models.ViewModels.SellViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Sell";
+	 Layout = "~/Views/Admin/_Layout.cshtml";
+}
+@if(ViewBag.Error != null)
+                                                    {
+                                                       	<div class="alert alert-danger" role="alert">
+                                                               	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    	                                                <span aria-hidden="True">&times;</span>
+			  	                                                </button>
+	                                                       @ViewBag.Error
+	                                                    </div>
+                                         
+                                                    }
+                                                    @if(ViewBag.Success != null)
+                                                    {
+                                                        <div class="alert alert-success" role="alert">
+                                                               	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    	                                                <span aria-hidden="True">&times;</span>
+			  	                                                </button>
+	                                                       @ViewBag.Success
+	                                                    </div>
+                                                    }
+
+                  	<div class="row">
+							<div class="card col-12">
+										<div class="card-header card-header-border-bottom">
+											<h2>Sell Assests</h2> 
+										</div>
+										<div class="card-body">
+											<form asp-action="Sell" method="post">
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="form-group">
+															<label for="fname">Full name</label>
+															<input asp-for="FullName" type="text" class="form-control" placeholder="John" disabled>
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class="form-group">
+															<label for="lname">Email Address</label>
+															<input asp-for="Email" type="text" class="form-control" placeholder="Smith@AppDomain.com" disabled>
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class="form-group">
+															<label for="Amount">Amount To Sell</label>
+															<input asp-for="Amount" type="text" class="form-control" placeholder="Amount">
+														</div>
+													</div>
+													
+												</div>
+												<div class="form-footer pt-5 border-top">
+													<button type="submit" class="btn btn-success btn-default">Sell</button>
+												</div>
+											</form>
+										</div>
+									</div>
+                 </div>

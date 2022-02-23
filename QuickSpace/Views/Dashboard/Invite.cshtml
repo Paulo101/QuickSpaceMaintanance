@@ -1,0 +1,51 @@
+﻿@model QuickSpace.Models.ViewModels.InviteViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Invite";
+}
+  @if(ViewBag.Error != null)
+                                                    {
+                                                       	<div class="alert alert-danger" role="alert">
+                                                               	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    	                                                <span aria-hidden="True">&times;</span>
+			  	                                                </button>
+	                                                       @ViewBag.Error
+	                                                    </div>
+                                         
+                                                    }
+                                                    @if(ViewBag.Success != null)
+                                                    {
+                                                        <div class="alert alert-success" role="alert">
+                                                               	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    	                                                <span aria-hidden="True">&times;</span>
+			  	                                                </button>
+	                                                       @ViewBag.Success
+	                                                    </div>
+                                                    }
+  <div class="content-wrapper">
+          <div class="content">	
+	                       <div class="card card-default">
+										<div class="card-header card-header-border-bottom">
+											<h2>Invite Member</h2><br />
+											 <p> : To Invite member, please enter their email address or copy the refferal code and send to them directly</p>
+										</div>
+										<label>Invitation Link : </label>
+                                        <label class="form-control" id="inlineFormInputGroupUsername2" placeholder="referral code">https://quickspaceinv.azurewebsites.net/Account/Register?ParentId=@Model.RefCode</label>
+												
+										<div class="card-body">
+											<form class="form-inline" asp-action="Invite" method="post">
+                                            
+												<label class="sr-only" for="inlineFormInputName2">Email</label>
+												<input asp-for="Email" type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Email Address">
+												<label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+												
+												<button type="submit" class="btn btn-primary mb-2">Send Email</button>
+											</form>
+											
+										</div>
+									</div>
+
+								</div>
+							</div>

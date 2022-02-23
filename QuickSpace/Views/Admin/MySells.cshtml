@@ -1,0 +1,61 @@
+﻿@model IEnumerable<QuickSpace.Models.Entities.Sell>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "My Sells";
+     Layout = "~/Views/Admin/_Layout.cshtml";
+}
+	@if(Model.Count() > 0)
+		{
+		<div class="row">
+							<div class="col-12"> 
+                  <!-- Recent Order Table -->
+                  <div class="card card-table-border-none" id="recent-orders">
+                    <div class="card-header justify-content-between">
+                      <h2>My Stickers</h2>
+                      <div class="date-range-report ">
+                        <span></span>
+                      </div>
+                    </div>
+                    <div class="card-body pt-0 pb-5">
+                      <table class="table card-table table-responsive table-responsive-large" style="width:100%">
+                        <thead>
+                          <tr>
+                            <th>Sell ID</th>
+                            <th>Sticker</th>
+                            <th class="d-none d-md-table-cell">Amount</th>
+                            <th>Status</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                               
+                          <tr>
+                            <td >@item.Id</td>
+                            <td >
+                              <a class="text-dark" href=""> @item.Sticker</a>
+                            </td>
+                            <td class="d-none d-md-table-cell">@item.Amount</td>
+                            <td >
+                                @if(@item.IsActive){
+                              <span class="badge badge-success"> Available </span>
+                                }else{
+                                   <span class="badge badge-danger"> Sold </span>
+                                }
+                            </td>
+                               
+                                </tr>
+                        }
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+      </div>
+</div>
+}
+else{
+     <h2>You have not made any Sales yet!</h2>
+}

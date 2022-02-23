@@ -1,0 +1,115 @@
+﻿@using System.Globalization
+@model QuickSpace.Models.ViewModels.WalletViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Wallet";
+}
+@if(ViewBag.Error != null)
+                                                    {
+                                                       	<div class="alert alert-danger" role="alert">
+                                                               	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    	                                                <span aria-hidden="True">&times;</span>
+			  	                                                </button>
+	                                                       @ViewBag.Error
+	                                                    </div>
+                                         
+                                                    }
+                                                    @if(ViewBag.Success != null)
+                                                    {
+                                                        <div class="alert alert-success" role="alert">
+                                                               	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    	                                                <span aria-hidden="True">&times;</span>
+			  	                                                </button>
+	                                                       @ViewBag.Success
+	                                                    </div>
+                                                    }
+   <div class="content-wrapper">
+          <div class="content">						 
+                  <!-- Top Statistics -->
+                  <div class="row">
+                    <div class="col-xl-3 col-sm-6">
+                      <div class="card card-mini mb-4">
+                        <div class="card-body">
+                          <h2 class="mb-1">@Model.Wallet.Deposit.ToString("C2", new CultureInfo("en-US",false))</h2>
+                          <p>Deposited Balance</p>
+                          <div class="chartjs-wrapper">
+                            <canvas id="barChart"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                      <div class="card card-mini  mb-4">
+                        <div class="card-body">
+                          <h2 class="mb-1">@Model.Wallet.Balance.ToString("C2", new CultureInfo("en-US",false))</h2>
+                          <p>Current Balance</p>
+                          <div class="chartjs-wrapper">
+                            <canvas id="dual-line"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                      <div class="card card-mini mb-4">
+                        <div class="card-body">
+                          <h2 class="mb-1">@Model.Wallet.Interest.ToString("C2", new CultureInfo("en-US",false))</h2>
+                          <p>Profit Made</p>
+                          <div class="chartjs-wrapper">
+                            <canvas id="area-chart"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                      <div class="card card-mini mb-4">
+                        <div class="card-body">
+                          <h2 class="mb-1">@Model.Wallet.Withdrawal.ToString("C2", new CultureInfo("en-US",false))</h2>
+                          <p>Withdrawal</p>
+                          <div class="chartjs-wrapper">
+                            <canvas id="line"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  	<div class="row">
+							<div class="card card-default">
+										<div class="card-header card-header-border-bottom">
+											<h2>Request Withdrawal</h2>
+										</div>
+										<div class="card-body">
+											<form asp-action="Wallet" method="post">
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="form-group">
+															<label for="fname">Full name</label>
+															<input asp-for="FullName" type="text" class="form-control" placeholder="John" disabled>
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class="form-group">
+															<label for="lname">Email Address</label>
+															<input asp-for="Wallet.WalletHolder" type="text" class="form-control" placeholder="Smith@AppDomain.com" disabled>
+														</div>
+													</div>
+													<div class="col-sm-6">
+														<div class="form-group">
+															<label for="Amount">Amount</label>
+															<input asp-for="Amount" type="text" class="form-control" placeholder="Amount">
+														</div>
+													</div>
+													
+												</div>
+												<div class="form-footer pt-5 border-top">
+													<button type="submit" class="btn btn-success btn-default">Request</button>
+												</div>
+											</form>
+										</div>
+									</div>
+                 </div>
+
+                  </div>
+                </div>

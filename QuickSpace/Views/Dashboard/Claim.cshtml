@@ -1,0 +1,54 @@
+﻿@model QuickSpace.Models.ViewModels.ClsimViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Claim";
+}
+  @if(ViewBag.Error != null)
+                                                    {
+                                                       	<div class="alert alert-danger" role="alert">
+                                                               	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    	                                                <span aria-hidden="True">&times;</span>
+			  	                                                </button>
+	                                                       @ViewBag.Error
+	                                                    </div>
+                                         
+                                                    }
+                                                    @if(ViewBag.Success != null)
+                                                    {
+                                                        <div class="alert alert-success" role="alert">
+                                                               	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    	                                                <span aria-hidden="True">&times;</span>
+			  	                                                </button>
+	                                                       @ViewBag.Success
+	                                                    </div>
+                                                    }
+  <div class="content-wrapper">
+          <div class="content">	
+	                       <div class="card card-default">
+										<div class="card-header card-header-border-bottom">
+											<h2>Claim Funds</h2><br />
+											 <p> : Hi @Model.FullName. To Claim, please provide the sticker code you recieved from the seller.</p>
+										</div>
+                     
+										<div class="card-body">
+											<form class="form-inline" asp-action="Claim" method="post">
+                                            
+												<label class="sr-only" for="inlineFormInputName2">Email</label>
+												<input asp-for="Sticker" type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Sticker Code">
+												<label class="sr-only" for="inlineFormInputGroupUsername2">Sticker</label>
+												<div class="input-group mb-2 mr-sm-2">
+													<div class="input-group-prepend">
+														<div class="input-group-text"></div>
+													</div>
+													<input asp-for="Email" type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Email" disabled>
+												</div>
+												<button type="submit" class="btn btn-primary mb-2">Claim</button>
+											</form>
+											
+										</div>
+									</div>
+
+								</div>
+							</div>

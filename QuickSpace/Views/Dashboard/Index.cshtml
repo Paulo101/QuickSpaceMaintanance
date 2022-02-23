@@ -1,0 +1,89 @@
+﻿@using System.Globalization
+@model QuickSpace.Models.Entities.Wallet
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+     ViewBag.Title = "Home";
+     Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+        <div class="content-wrapper">
+          <div class="content">						 
+                  <!-- Top Statistics -->
+                  <div class="row">
+                    <div class="col-xl-3 col-sm-6">
+                      <div class="card card-mini mb-4">
+                        <div class="card-body">
+                          <h2 class="mb-1">@Model.Deposit.ToString("C2", new CultureInfo("en-US",false))</h2>
+                          <p>Deposited Balance</p>
+                          <div class="chartjs-wrapper">
+                            <canvas id="barChart"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                      <div class="card card-mini  mb-4">
+                        <div class="card-body">
+                          <h2 class="mb-1">@Model.Balance.ToString("C2", new CultureInfo("en-US",false))</h2>
+                          <p>Current Balance</p>
+                          <div class="chartjs-wrapper">
+                            <canvas id="dual-line"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                      <div class="card card-mini mb-4">
+                        <div class="card-body">
+                          <h2 class="mb-1">@Model.Interest.ToString("C2", new CultureInfo("en-US",false))</h2>
+                          <p>Profit Made</p>
+                          <div class="chartjs-wrapper">
+                            <canvas id="area-chart"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6">
+                      <div class="card card-mini mb-4">
+                        <div class="card-body">
+                          <h2 class="mb-1">@Model.Withdrawal.ToString("C2", new CultureInfo("en-US",false))</h2>
+                          <p>Withdrawal</p>
+                          <div class="chartjs-wrapper">
+                            <canvas id="line"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  	<div class="row">
+							<div class="col-xl-12 col-md-12">
+                      <!-- Sales Graph -->
+                      <div class="card card-default" data-scroll-height="675">
+                        <div class="card-header">
+                          <h2>Sales Of The Year</h2>
+                        </div>
+                        <div class="card-body">
+                          <canvas id="linechart" class="chartjs"></canvas>
+                        </div>
+                        <div class="card-footer d-flex flex-wrap bg-white p-0">
+                          <div class="col-6 px-0">
+                            <div class="text-center p-4">
+                              <h4>$6,308</h4>
+                              <p class="mt-2">Total orders of this year</p>
+                            </div>
+                          </div>
+                          <div class="col-6 px-0">
+                            <div class="text-center p-4 border-left">
+                              <h4>$70,506</h4>
+                              <p class="mt-2">Total revenue of this year</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                         </div>
+                 </div>
+
+                  </div>
+                </div>
