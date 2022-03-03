@@ -44,6 +44,8 @@ namespace QuickSpace.Controllers
                 ViewBag.Error = "Something went wrong viewing the user";
                 return View();
             }
+            double weeks = (DateTime.Now - user.CreatedDate).TotalDays / 7;
+            ViewBag.Weeks = weeks.ToString("0.0");
             var wallet = repository.WalletRepository.FindAll().FirstOrDefault(S => S.WalletHolder == user.Email);
             return View(new UserViewModel { User = user, Wallet = wallet });
         }

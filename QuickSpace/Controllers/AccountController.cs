@@ -22,9 +22,12 @@ namespace QuickSpace.Controllers
         }
         [AllowAnonymous]
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string ReturnUrl)
         {
-            return View();
+            return View(new LoginViewModel
+            {
+                ReturnUrl = ReturnUrl   
+            });
         }
         [AllowAnonymous]
         [HttpGet]
@@ -58,7 +61,7 @@ namespace QuickSpace.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model, string ReturnUrl)
         {
             var user = await UserManager.FindByEmailAsync(model.Email);
          
@@ -79,6 +82,8 @@ namespace QuickSpace.Controllers
 
             if (result.Succeeded)
             {
+                if (!String.IsNullOrEmpty(ReturnUrl) && Url.IsLocalUrl(ReturnUrl))
+                    return Redirect(ReturnUrl);
                 if (user.Email.Equals("no-reply-quickspace@outlook.com"))
                     return RedirectToAction("Index", "Admin");
                 return RedirectToAction("Index", "Dashboard");
@@ -90,6 +95,10 @@ namespace QuickSpace.Controllers
             }
         }
         [AllowAnonymous]
+        [HttpGet]
+        public IActionResult AccessDenied()
+        { return View();         }
+            [AllowAnonymous]
         [HttpGet]
         public IActionResult Register(string? ParentId)
         {

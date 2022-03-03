@@ -10,9 +10,9 @@ namespace QuickSpace.EmailHandler
             bool status = false;
             try
             {
-                string HostAddress = "smtp.gmail.com";
-            string FormEmailId = "mgerrion@gmail.com";
-            string Password = "0820995952";
+                string HostAddress = "smtp-mail.outlook.com";
+            string FormEmailId = "no-reply-quickspace@outlook.com";
+            string Password = "QuickSpace1234";
             string Port = "587";
 
             MailMessage mailMessage = new MailMessage();

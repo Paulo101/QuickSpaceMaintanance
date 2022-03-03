@@ -58,7 +58,7 @@
                     <form asp-action="Login" method="Post" class="getin_form border-form" id="login">
                        
                         <div class="row">
-                            
+                            <input asp-for="ReturnUrl" class="form-control" type="hidden" placeholder="Email:" required id="loginEmail">
                             <div class="col-md-12 col-sm-12">
                                 <div class="form-group bottom35">
                                     <label for="loginEmail" class="d-none"></label>

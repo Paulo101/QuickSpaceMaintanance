@@ -23,6 +23,7 @@ namespace QuickSpace.Models.ViewModels
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+        public string ReturnUrl { get; internal set; }
     }
     public class ForgotPasswordViewModel {
         [Required]

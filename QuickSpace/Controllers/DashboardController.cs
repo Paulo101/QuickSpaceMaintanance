@@ -103,6 +103,9 @@ namespace QuickSpace.Controllers
         }
         public IActionResult Index()
         {
+            var user = repository.ApplicationUsers.FirstOrDefault(s => s.Email == User.Identity?.Name);
+            double weeks = (DateTime.Now - user.CreatedDate).TotalDays / 7;
+            ViewBag.Weeks = weeks.ToString("0.0");  
             return View(repository.WalletRepository.FindAll().FirstOrDefault(s => s.WalletHolder == User.Identity.Name));
         }
         public IActionResult Claim() { 
